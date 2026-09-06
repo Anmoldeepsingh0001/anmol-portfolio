@@ -402,6 +402,30 @@
   .ig-frame:hover::after{ opacity:1; }
   .ig-frame-video{ background:#000; }
   .ig-frame-video::before{ display:none; }
+
+  /* ============ SHARED 3D TILT CARD (analytics screenshots, portrait) ============ */
+  .tilt-card{
+    position:relative; transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+    will-change:transform; transform-style:preserve-3d; perspective:1200px;
+  }
+  .tilt-card::after{
+    content:''; position:absolute; inset:0; z-index:6; pointer-events:none; border-radius:inherit;
+    background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.4), transparent 60%);
+    opacity:0; transition:opacity .4s ease; mix-blend-mode:overlay;
+  }
+  .tilt-card:hover::after{ opacity:1; }
+  .tilt-card:hover{ box-shadow:0 30px 50px -20px rgba(0,0,0,0.3); }
+
+  /* ============ LIGHTER HOVER LIFTS — timeline, chips, spec strip ============ */
+  .timeline-item{ transition:transform .3s cubic-bezier(.16,1,.3,1); border-radius:var(--radius-sm); }
+  .timeline-item:hover{ transform:translateX(6px); }
+  .skill-chip{ transition:transform .25s cubic-bezier(.16,1,.3,1), background .2s ease, color .2s ease, border-color .2s ease; }
+  .skill-chip:hover{ transform:translateY(-3px) scale(1.06); background:var(--blue); color:#fff; border-color:transparent; }
+  .spec-item{ transition:transform .3s cubic-bezier(.16,1,.3,1); }
+  .spec-item:hover{ transform:translateY(-4px); }
+  @media (prefers-reduced-motion: reduce){
+    .timeline-item:hover, .skill-chip:hover, .spec-item:hover{ transform:none; }
+  }
   .view-full-post{
     position:absolute; left:50%; bottom:12px; transform:translateX(-50%); z-index:8;
     font-size:0.76rem; font-weight:600; color:var(--blue); background:#fff;
@@ -565,7 +589,7 @@
 <section id="about" class="pad reveal">
   <div class="resume-grid">
     <div class="resume-side">
-      <div class="about-portrait" data-path="assets/profile/about.jpg">
+      <div class="about-portrait tilt-card" data-path="assets/profile/about.jpg">
         <img src="assets/profile/about.jpg" alt="Anmol Multani portrait" onerror="mediaFallback(this)">
       </div>
       <div class="credit-list" style="margin-top:0;">
@@ -628,12 +652,12 @@
             <span class="resume-role">Model, Actor &amp; Content Creator</span>
             <span class="resume-date">2024–Present</span>
           </div>
-          <div class="resume-company">Independent, brand collaborations across Atlantic Canada</div>
+          <div class="resume-company">Independent, represented by Refy Agency for all modelling shoots</div>
           <ul class="resume-bullets">
-            <li>Rodd Royalty, business editorial campaign</li>
-            <li>Christopher's Beach Club, coastal apparel campaign</li>
-            <li>Rodd Crowbush Resort, hospitality film</li>
-            <li>Coastal Culture, ongoing brand partnership</li>
+            <li>Rodd Royalty, business editorial campaign <em>July 2024</em>, photographed by Brady McCloskey</li>
+            <li>Christopher's Beach Club, coastal apparel campaign <em>June 2025</em></li>
+            <li>Rodd Crowbush Resort, hospitality film <em>July 2026</em></li>
+            <li>Coastal Culture, ongoing brand partnership <em>August 2026</em></li>
           </ul>
         </div>
       </div>
@@ -1000,11 +1024,11 @@
     <h3>Real reach, real engagement.</h3>
     <p>A look at how the content actually performs, pulled straight from my Instagram dashboard.</p>
     <div class="analytics-grid">
-      <div class="analytics-shot" data-path="assets/analytics/instagram-profile.jpg">
+      <div class="analytics-shot tilt-card" data-path="assets/analytics/instagram-profile.jpg">
         <img src="assets/analytics/instagram-profile.jpg" alt="Instagram profile" onerror="mediaFallback(this)">
         <span class="analytics-label">Instagram · Profile</span>
       </div>
-      <div class="analytics-shot" data-path="assets/analytics/instagram-overview.jpg">
+      <div class="analytics-shot tilt-card" data-path="assets/analytics/instagram-overview.jpg">
         <img src="assets/analytics/instagram-overview.jpg" alt="Instagram analytics overview" onerror="mediaFallback(this)">
         <span class="analytics-label">Instagram · Analytics</span>
       </div>
@@ -1151,9 +1175,9 @@
     });
   });
 
-  // 3D tilt + glare on the Instagram carousel cards
+  // 3D tilt + glare on the Instagram carousel cards, analytics screenshots, and portrait photo
   if(!reduceMotion){
-    document.querySelectorAll('.ig-frame').forEach(function(card){
+    document.querySelectorAll('.ig-frame, .tilt-card').forEach(function(card){
       card.addEventListener('mousemove', function(e){
         var r = card.getBoundingClientRect();
         var px = (e.clientX - r.left) / r.width;
