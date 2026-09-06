@@ -221,9 +221,15 @@
     .timeline-dot{ transition:background .3s ease; transform:scale(1); }
   }
   .resume-bullets{ margin:0 0 0; padding-left:1.1rem; color:var(--gray); font-size:0.96rem; }
-  .resume-bullets li{ margin-bottom:0.35rem; }
+  .resume-bullets li{ margin-bottom:0.6rem; display:flex; flex-direction:column; gap:0.25rem; }
   .resume-bullets li:last-child{ margin-bottom:0; }
   .resume-bullets em{ color:var(--ink); font-style:normal; font-weight:500; }
+  .credit-tag{
+    display:inline-flex; align-items:center; gap:0.4em; width:fit-content;
+    font-size:0.68rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--gray-light);
+  }
+  .credit-tag svg{ width:11px; height:11px; flex:none; opacity:0.8; color:var(--blue); }
 
   /* ============ CATEGORY TABS ============ */
   .category-tabs{
@@ -654,10 +660,20 @@
           </div>
           <div class="resume-company">Independent, represented by Refy Agency for all modelling shoots</div>
           <ul class="resume-bullets">
-            <li>Rodd Royalty, business editorial campaign <em>July 2024</em>, photographed by Brady McCloskey</li>
-            <li>Christopher's Beach Club, coastal apparel campaign <em>June 2025</em></li>
-            <li>Rodd Crowbush Resort, hospitality film <em>July 2026</em></li>
-            <li>Coastal Culture, ongoing brand partnership <em>August 2026</em>, photographed by Simon Reid Studios</li>
+            <li>
+              <span class="bullet-main">Rodd Royalty, business editorial campaign <em>July 2024</em></span>
+              <span class="credit-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.4"/></svg>Brady McCloskey</span>
+            </li>
+            <li>
+              <span class="bullet-main">Christopher's Beach Club, coastal apparel campaign <em>June 2025</em></span>
+            </li>
+            <li>
+              <span class="bullet-main">Rodd Crowbush Resort, hospitality film <em>July 2026</em></span>
+            </li>
+            <li>
+              <span class="bullet-main">Coastal Culture, ongoing brand partnership <em>August 2026</em></span>
+              <span class="credit-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.4"/></svg>Simon Reid Studios</span>
+            </li>
           </ul>
         </div>
       </div>
