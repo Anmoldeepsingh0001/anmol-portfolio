@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anmol Multani — UGC Portfolio</title>
+<meta name="description" content="Anmol Multani — UGC content creator portfolio. Brand collaborations, content style, and performance metrics for brand partners.">
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Alex+Brush&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #f6f5f2;
+    --bg-alt: #efeeea;
+    --ink: #16161a;
+    --gray: #6b6b6f;
+    --gray-light: #9a9a9d;
+    --red: #c1392b;
+    --red-dark: #9c2c20;
+    --hairline: rgba(0,0,0,0.14);
+    --radius: 20px;
+    --radius-sm: 12px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --script: 'Alex Brush', cursive;
+    --wrap: 1160px;
+    --gutter: clamp(1.25rem, 5vw, 3.5rem);
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+  body{
+    margin:0; background:var(--bg); color:var(--ink); font-family:var(--font);
+    font-size:16px; line-height:1.55; letter-spacing:-0.008em; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 var(--gutter); }
+  h1,h2,h3,h4{ margin:0; }
+  .rule{ border-top:1.5px solid var(--ink); }
+  .eyebrow{ font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); }
+  .script{ font-family:var(--script); color:var(--red); font-weight:400; line-height:1; }
+
+  /* ============ REVEAL ============ */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ============ HEADER ============ */
+  header.ugc-nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.3rem var(--gutter); border-bottom:1px solid var(--hairline);
+  }
+  .ugc-wordmark{ font-size:0.82rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
+  .ugc-role-tag{ font-size:0.82rem; color:var(--gray); }
+
+  /* ============ HERO ============ */
+  .hero{ padding:clamp(3.5rem,8vw,6rem) var(--gutter) 3.5rem; max-width:var(--wrap); margin:0 auto; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(1.5rem,4vw,3rem); align-items:center; }
+  @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero-script{ font-size:clamp(3.6rem,9vw,6.2rem); margin:0 0 0.4rem; }
+  .hero-name{ font-size:1.1rem; font-weight:700; letter-spacing:0.02em; margin-bottom:1.6rem; }
+  .hero-tag{ font-size:1.05rem; color:var(--gray); max-width:42ch; margin:0 0 1.8rem; }
+  .hero-cta{ display:flex; gap:0.8rem; flex-wrap:wrap; }
+  .pill{
+    display:inline-flex; align-items:center; gap:0.45em; font-size:0.9rem; font-weight:600;
+    padding:0.75em 1.5em; border-radius:980px; transition:transform .3s cubic-bezier(.16,1,.3,1), background .2s ease, color .2s ease;
+  }
+  .pill.solid{ background:var(--ink); color:#fff; }
+  .pill.solid:hover{ background:var(--red); }
+  .pill.outline{ border:1.5px solid var(--ink); color:var(--ink); }
+  .pill.outline:hover{ background:var(--ink); color:#fff; }
+  .pill svg{ width:1.05em; height:1.05em; }
+
+  .hero-photo-wrap{ position:relative; }
+  .hero-photo{
+    aspect-ratio:4/5; border-radius:var(--radius); overflow:hidden; position:relative;
+    background:linear-gradient(150deg,#e4e2dc,#cfcdc5);
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
+  .hero-photo-tag{
+    position:absolute; left:-1.1rem; bottom:-1.1rem; width:34%; max-width:150px;
+    aspect-ratio:1; border-radius:var(--radius-sm); overflow:hidden; border:5px solid var(--bg);
+    box-shadow:0 20px 40px -18px rgba(0,0,0,0.35); background:#ddd;
+  }
+  .hero-photo-tag img{ width:100%; height:100%; object-fit:cover; }
+  @media (max-width:520px){ .hero-photo-tag{ display:none; } }
+
+  /* ============ SECTION HEAD ============ */
+  section.pad{ padding:3.6rem var(--gutter); max-width:var(--wrap); margin:0 auto; }
+  .sec-head{ text-align:center; margin:0 auto 2.6rem; }
+  .sec-head .script{ font-size:clamp(2.4rem,5vw,3.4rem); }
+  .rule-row{ display:flex; align-items:center; }
+  .rule-row .rule{ flex:1; }
+
+  /* ============ ABOUT ============ */
+  .about-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:clamp(1.6rem,4vw,3.4rem); align-items:center; }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-photo{ aspect-ratio:4/5; border-radius:var(--radius); overflow:hidden; background:#ddd; }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; }
+  .about-copy p{ font-size:1.05rem; color:var(--gray); margin:0; }
+
+  /* ============ EXPERTISE / NICHE GRID ============ */
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(1.2rem,3vw,2rem); }
+  @media (max-width:900px){ .grid-4{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .grid-4{ grid-template-columns:1fr; } }
+  .expertise-item .icon{
+    width:42px; height:42px; border-radius:10px; background:var(--red); color:#fff;
+    display:flex; align-items:center; justify-content:center; margin-bottom:1rem;
+    transition:transform .3s cubic-bezier(.16,1,.3,1), background .3s ease;
+  }
+  .expertise-item:hover .icon{ transform:rotate(-8deg) scale(1.08); background:var(--ink); }
+  .expertise-item .icon svg{ width:20px; height:20px; }
+  .expertise-item h4{ font-size:0.98rem; font-weight:700; color:var(--red); margin-bottom:0.4rem; }
+  .expertise-item p{ font-size:0.92rem; color:var(--gray); margin:0; }
+
+  .niche-item h4{ font-size:0.95rem; font-weight:700; color:var(--red); margin-bottom:0.5rem; }
+  .niche-item p{ font-size:0.9rem; color:var(--gray); margin:0; }
+
+  /* ============ METRICS ============ */
+  .metrics-band{ background:var(--ink); color:#fff; }
+  .metrics-band .sec-head .eyebrow{ color:#9a9a9d; }
+  .metrics-band .rule-row .rule{ border-top-color:rgba(255,255,255,0.25); }
+  .metrics-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.6rem; }
+  @media (max-width:800px){ .metrics-grid{ grid-template-columns:1fr 1fr; } }
+  .metric-tile{ text-align:center; padding:1.6rem 1rem; border:1px solid rgba(255,255,255,0.14); border-radius:var(--radius-sm);
+    transition:transform .3s cubic-bezier(.16,1,.3,1), border-color .3s ease; }
+  .metric-tile:hover{ transform:translateY(-6px); border-color:var(--red); }
+  .metric-num{ font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; color:var(--red); letter-spacing:-0.02em; }
+  .metric-label{ font-size:0.82rem; color:#c7c7ca; margin-top:0.4rem; }
+
+  /* ============ HIGHLIGHTS ============ */
+  .highlight-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  @media (max-width:800px){ .highlight-grid{ grid-template-columns:1fr; } }
+  .highlight-item{ position:relative; }
+  .highlight-photo{
+    aspect-ratio:4/5; border-radius:var(--radius-sm); overflow:hidden; position:relative;
+    background:#ddd; transition:transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  .highlight-item a{ display:block; }
+  .highlight-item:hover .highlight-photo{ transform:translateY(-6px); }
+  .highlight-photo img{ width:100%; height:100%; object-fit:cover; }
+  .highlight-cap{ margin-top:0.7rem; text-align:center; }
+  .highlight-cap .k{ font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--red); }
+  .highlight-cap .v{ font-size:0.92rem; color:var(--gray); margin-top:0.15rem; }
+
+  /* ============ BRAND PARTNERS ============ */
+  .partner-strip{ display:flex; flex-wrap:wrap; justify-content:center; gap:2.2rem 2.8rem; }
+  .partner-name{
+    font-size:0.98rem; font-weight:700; letter-spacing:0.02em; color:var(--gray);
+    transition:color .25s ease, transform .25s cubic-bezier(.16,1,.3,1);
+  }
+  .partner-name:hover{ color:var(--ink); transform:translateY(-2px); }
+
+  /* ============ CTA / FOOTER ============ */
+  .cta-band{ background:var(--ink); color:#fff; }
+  .cta-inner{ padding:4.5rem var(--gutter) 3rem; max-width:var(--wrap); margin:0 auto; text-align:center; }
+  .cta-inner .script{ font-size:clamp(3rem,7vw,4.6rem); }
+  .cta-sub{ font-size:0.95rem; letter-spacing:0.08em; text-transform:uppercase; color:#c7c7ca; margin:0.6rem 0 2.2rem; }
+  .cta-contact{ display:flex; gap:1.4rem; justify-content:center; flex-wrap:wrap; font-size:0.92rem; color:#d8d8da; margin-bottom:2rem; }
+  .cta-contact a:hover{ color:#fff; }
+  footer.ugc-footer{
+    border-top:1px solid rgba(255,255,255,0.14); padding:1.3rem var(--gutter);
+    font-size:0.78rem; color:#8a8a8d; display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.6rem;
+    max-width:var(--wrap); margin:0 auto;
+  }
+  footer.ugc-footer a:hover{ color:#fff; }
+</style>
+</head>
+<body>
+
+<header class="ugc-nav">
+  <span class="ugc-wordmark">Anmol Multani</span>
+  <span class="ugc-role-tag">UGC Content Creator</span>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">UGC Portfolio</span>
+      <h1 class="hero-script script">Portfolio</h1>
+      <div class="hero-name">ANMOL MULTANI</div>
+      <p class="hero-tag">Model, actor, and content creator based in Prince Edward Island — creating authentic, brand-ready UGC across lifestyle, food, fashion, and finance.</p>
+      <div class="hero-cta">
+        <a class="pill solid" href="mailto:admin@anmolmultani.ca">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+          Work With Me
+        </a>
+        <a class="pill outline" href="https://instagram.com/anmol.finance" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          anmol.finance
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap reveal">
+      <div class="hero-photo">
+        <img src="assets/profile/hero.jpg" alt="Anmol Multani">
+      </div>
+      <div class="hero-photo-tag">
+        <img src="assets/profile/about.jpg" alt="Anmol Multani portrait">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="pad reveal">
+  <div class="about-grid">
+    <div class="about-photo">
+      <img src="assets/christophers-beach-club/01.jpg" alt="Anmol Multani, Christopher's Beach Club campaign">
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">About Me</span>
+      <h2 class="script" style="font-size:clamp(2.2rem,4.6vw,3rem); margin:0.5rem 0 1rem;">About Me</h2>
+      <p>I'm a model, actor, and content creator building authentic, results-driven UGC for brands across Atlantic Canada. With real experience in front of the camera — editorials, hospitality film, and on-camera acting — I create content that feels natural, not scripted. My work blends creativity with strategy: every piece is shot, edited, and captioned to actually move the needle for the brand behind it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERTISE ============ -->
+<section class="pad">
+  <div class="sec-head reveal">
+    <span class="eyebrow">What I Bring</span>
+    <h2 class="script">My Expertise</h2>
+  </div>
+  <div class="grid-4 reveal">
+    <div class="expertise-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></div>
+      <h4>Social &amp; UGC Content</h4>
+      <p>Platform-native photo and video content built to stop the scroll and deliver a clear brand message.</p>
+    </div>
+    <div class="expertise-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.4"/></svg></div>
+      <h4>Short-Form Video</h4>
+      <p>Trend-aware reels with strong hooks, clean transitions, and storytelling that keeps viewers watching.</p>
+    </div>
+    <div class="expertise-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18 9 12l4 3 7-9"/><path d="M15 6h5v5"/></svg></div>
+      <h4>Content Strategy</h4>
+      <p>Structured content planning across campaigns, keeping delivery consistent and on-brand.</p>
+    </div>
+    <div class="expertise-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17.25V20h2.75L17.81 8.94l-2.75-2.75L4 17.25ZM18.7 7.04a1 1 0 0 0 0-1.41l-2.33-2.33a1 1 0 0 0-1.41 0l-1.5 1.5 3.74 3.74 1.5-1.5Z"/></svg></div>
+      <h4>Editing &amp; Script Writing</h4>
+      <p>Full post-production and caption writing, backed by real videography and Canva design experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METRICS ============ -->
+<section class="metrics-band">
+  <div class="pad" style="padding-top:3.6rem; padding-bottom:3.6rem;">
+    <div class="sec-head reveal">
+      <span class="eyebrow">By The Numbers</span>
+      <h2 class="script">Real Reach</h2>
+    </div>
+    <div class="metrics-grid reveal">
+      <div class="metric-tile">
+        <div class="metric-num">44.1K+</div>
+        <div class="metric-label">Views, last 30 days</div>
+      </div>
+      <div class="metric-tile">
+        <div class="metric-num">+1,573%</div>
+        <div class="metric-label">Post-view growth, 60 days</div>
+      </div>
+      <div class="metric-tile">
+        <div class="metric-num">60K+</div>
+        <div class="metric-label">Views across UGC brand videos</div>
+      </div>
+      <div class="metric-tile">
+        <div class="metric-num">6+</div>
+        <div class="metric-label">Brand collaborations to date</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NICHE ============ -->
+<section class="pad">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Focus Areas</span>
+    <h2 class="script">Niche &amp; Content</h2>
+  </div>
+  <div class="grid-4 reveal">
+    <div class="niche-item">
+      <h4>Brand Collaboration</h4>
+      <p>Editorial, hospitality, and coastal campaigns for tourism and lifestyle brands.</p>
+    </div>
+    <div class="niche-item">
+      <h4>Food Review</h4>
+      <p>Honest, engaging reviews of local spots — content that's driven real viral reach.</p>
+    </div>
+    <div class="niche-item">
+      <h4>Content Creation</h4>
+      <p>Outfit-of-the-day and everyday lifestyle content, styled and shot around the Island.</p>
+    </div>
+    <div class="niche-item">
+      <h4>Finance Content</h4>
+      <p>Approachable, no-jargon money talk for a younger audience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS ============ -->
+<section class="pad">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Selected Work</span>
+    <h2 class="script">Portfolio Highlights</h2>
+  </div>
+  <div class="highlight-grid reveal">
+    <div class="highlight-item">
+      <a href="https://www.instagram.com/p/DVMta5YDkQB/" target="_blank" rel="noopener">
+        <div class="highlight-photo"><img src="assets/rodd-royalty/campaign-poster.jpg" alt="Rodd Royalty campaign"></div>
+      </a>
+      <div class="highlight-cap"><div class="k">Rodd Royalty</div><div class="v">Business editorial campaign</div></div>
+    </div>
+    <div class="highlight-item">
+      <a href="https://www.instagram.com/reel/DHmR5x5suN-/" target="_blank" rel="noopener">
+        <div class="highlight-photo"><img src="assets/christophers-beach-club/03.jpg" alt="Christopher's Beach Club campaign"></div>
+      </a>
+      <div class="highlight-cap"><div class="k">Christopher's Beach Club</div><div class="v">Coastal apparel campaign</div></div>
+    </div>
+    <div class="highlight-item">
+      <a href="https://www.instagram.com/p/DaTEvTBHPSq/" target="_blank" rel="noopener">
+        <div class="highlight-photo"><img src="assets/coastal-culture/01.jpg" alt="Coastal Culture campaign"></div>
+      </a>
+      <div class="highlight-cap"><div class="k">Coastal Culture</div><div class="v">Ongoing brand partnership</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND PARTNERS ============ -->
+<section class="pad">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Trusted By</span>
+    <h2 class="script">Brand Partners</h2>
+  </div>
+  <div class="partner-strip reveal">
+    <span class="partner-name">Rodd Royalty</span>
+    <span class="partner-name">Christopher's Beach Club</span>
+    <span class="partner-name">Rodd Crowbush Resort</span>
+    <span class="partner-name">Coastal Culture</span>
+    <span class="partner-name">Moe's Latte</span>
+    <span class="partner-name">Jack's Pizza</span>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<div class="cta-band">
+  <div class="cta-inner reveal">
+    <h2 class="script">Let's Create</h2>
+    <p class="cta-sub">Impactful content, together</p>
+    <div class="cta-contact">
+      <a href="mailto:admin@anmolmultani.ca">admin@anmolmultani.ca</a>
+      <a href="https://instagram.com/anmol.finance" target="_blank" rel="noopener">@anmol.finance</a>
+    </div>
+  </div>
+  <footer class="ugc-footer">
+    <span>© 2026 Anmol Multani</span>
+    <a href="index.html">Full Portfolio ↗</a>
+  </footer>
+</div>
+
+<script>
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
